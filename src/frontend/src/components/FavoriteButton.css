@@ -1,0 +1,97 @@
+/* Register CSS custom properties so GSAP can animate them as first-class values */
+@property --star-y {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+
+@property --star-scale {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 1;
+}
+
+/* ── Base button ─────────────────────────────────────────────────────────── */
+.favorite-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.45);
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35), 0 0 0 0 rgba(239, 68, 68, 0);
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+  outline: none;
+  /* Initialise custom props so GSAP can tween them */
+  --star-y: 0px;
+  --star-scale: 1;
+}
+
+.favorite-button:hover {
+  transform: scale(1.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45), 0 0 0 0 rgba(239, 68, 68, 0);
+}
+
+.favorite-button:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.8);
+  outline-offset: 2px;
+}
+
+/* ── Burst / star decorative element ────────────────────────────────────── */
+.favorite-button .star-burst {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(239, 68, 68, 0.7) 0%,
+    rgba(251, 146, 60, 0.4) 45%,
+    transparent 70%
+  );
+  transform: translateY(var(--star-y)) scale(var(--star-scale));
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.favorite-button.animated .star-burst {
+  opacity: 1;
+}
+
+.favorite-button .star-burst.star-round {
+  border-radius: 50%;
+}
+
+/* ── Heart icon states ───────────────────────────────────────────────────── */
+.favorite-button .heart-icon {
+  transition: fill 0.2s ease, stroke 0.2s ease;
+  pointer-events: none;
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+}
+
+/* Not favorited — white outline heart, clearly visible on dark backdrop */
+.favorite-button:not(.active) .heart-icon {
+  fill: transparent;
+  stroke: white;
+  stroke-width: 2;
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.6));
+}
+
+/* Favorited — red filled heart */
+.favorite-button.active .heart-icon {
+  fill: #ef4444;
+  stroke: #ef4444;
+  stroke-width: 1.5;
+  filter: drop-shadow(0 0 4px rgba(239, 68, 68, 0.5));
+}
+
+/* Subtle pulse glow when active */
+.favorite-button.active {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35), 0 0 8px rgba(239, 68, 68, 0.35);
+}

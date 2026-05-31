@@ -1,0 +1,26 @@
+{
+  "overview": "WanderAssist is a professional travel planning and booking app — discover destinations, generate personalized itineraries, select flights and hotels, track favorites, manage budgets, and complete bookings all in one place.",
+  "features": [
+    "Favorites with GSAP heart animation — save and revisit your favorite plans",
+    "Consistent booking amounts across summary, payment, confirmation, and history",
+    "Flight seat grid in correct A B C | D E F order with departure city selection and dynamic filtering",
+    "Image fallback handling — no broken images anywhere in the app",
+    "Multi-step travel wizard for Solo, Friends, Family, and Corporate trips",
+    "Budget planner with destination finder and expense tracker",
+    "Animated login page with globe and orbiting plane",
+    "Senior citizen tours with dedicated booking flow"
+  ],
+  "category": "travel",
+  "tags": [
+    "travel",
+    "booking",
+    "itinerary",
+    "vacation",
+    "trip-planning",
+    "favorites",
+    "flights",
+    "hotels",
+    "budget-tracker"
+  ],
+  "last_updated": "2026-05-15T11:17:26.056Z"
+}
